@@ -10,7 +10,6 @@ public class ValorProporcional extends Rubrica {
 	private BigDecimal periodo;
 	private BigDecimal dias;
 	
-	
 	public ValorProporcional(Rubrica rubrica, BigDecimal periodo, BigDecimal dias) {
 		this.setRubrica(rubrica);
 		this.setPeriodo(periodo);		
