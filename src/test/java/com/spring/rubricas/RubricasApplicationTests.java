@@ -11,6 +11,7 @@ import com.spring.rubricas.entities.Operacao;
 import com.spring.rubricas.entities.Operacao.Operador;
 import com.spring.rubricas.entities.PercentualOutraRubrica;
 import com.spring.rubricas.entities.ValorFixo;
+import com.spring.rubricas.entities.ValorProporcional;
 
 @SpringBootTest
 class RubricasApplicationTests {
@@ -43,6 +44,14 @@ class RubricasApplicationTests {
 		Operacao valorPercentual = new Operacao(valorFixo, percentual, Operador.MULTIPLICACAO);
 		
 		assertEquals(new BigDecimal("10.00"), valorPercentual.calcular());
+	}
+	
+	@Test
+	void valorProporcional() {
+		ValorFixo valorFixo = new ValorFixo(new BigDecimal("5000"));
+		ValorProporcional valorProp = new ValorProporcional(valorFixo, new BigDecimal("30"), new BigDecimal("15"));
+		
+		assertEquals(new BigDecimal("2500.00"), valorProp.calcular());
 	}
 
 }

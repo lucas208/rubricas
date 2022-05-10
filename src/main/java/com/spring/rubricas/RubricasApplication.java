@@ -10,6 +10,7 @@ import com.spring.rubricas.entities.Operacao;
 import com.spring.rubricas.entities.Operacao.Operador;
 import com.spring.rubricas.entities.PercentualOutraRubrica;
 import com.spring.rubricas.entities.ValorFixo;
+import com.spring.rubricas.entities.ValorProporcional;
 
 @SpringBootApplication
 public class RubricasApplication implements CommandLineRunner {
@@ -22,8 +23,8 @@ public class RubricasApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 		System.out.println();
-		
-		ValorFixo valorFixo = new ValorFixo(new BigDecimal("100"));
+		// Vencimento básico
+		ValorFixo valorFixo = new ValorFixo(new BigDecimal("5000"));
 		PercentualOutraRubrica percentual = new PercentualOutraRubrica(valorFixo, new BigDecimal("0.10"));
 		System.out.println(percentual.calcular());
 		
@@ -35,6 +36,10 @@ public class RubricasApplication implements CommandLineRunner {
 		
 		Operacao valorPercentual = new Operacao(valorFixo, percentual2, Operador.MULTIPLICACAO);
 		System.out.println(valorPercentual.calcular());
+		
+		ValorProporcional valorProp = new ValorProporcional(valorFixo, new BigDecimal("15"), new BigDecimal("15"));
+		System.out.println(valorProp.calcular());
+		
 	}
 
 }
