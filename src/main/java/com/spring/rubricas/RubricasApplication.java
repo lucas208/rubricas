@@ -37,7 +37,7 @@ public class RubricasApplication implements CommandLineRunner {
 		Operacao valorPercentual = new Operacao(valorFixo, percentual2, Operador.MULTIPLICACAO);
 		System.out.println(valorPercentual.calcular());
 		
-		ValorProporcional valorProp = new ValorProporcional(valorFixo, new BigDecimal("15"), new BigDecimal("15"));
+		ValorProporcional valorProp = new ValorProporcional(valorFixo, new BigDecimal("30"), new BigDecimal("15"));
 		System.out.println(valorProp.calcular());
 		
 	}

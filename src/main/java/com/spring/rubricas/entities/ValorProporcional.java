@@ -44,7 +44,7 @@ public class ValorProporcional extends Rubrica {
 
 	@Override
 	public BigDecimal calcular() {
-		return this.rubrica.calcular().divide(new BigDecimal("30"), MathContext.DECIMAL128).multiply(this.dias).setScale(2, RoundingMode.DOWN);
+		return this.rubrica.calcular().divide(this.periodo, MathContext.DECIMAL128).multiply(this.dias).setScale(2, RoundingMode.HALF_EVEN);
 	}
 
 }
