@@ -3,15 +3,14 @@ package com.spring.rubricas;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.spring.rubricas.entities.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.spring.rubricas.entities.Operacao;
 import com.spring.rubricas.entities.Operacao.Operador;
-import com.spring.rubricas.entities.PercentualOutraRubrica;
-import com.spring.rubricas.entities.ValorFixo;
-import com.spring.rubricas.entities.ValorProporcional;
 
 @SpringBootTest
 class RubricasApplicationTests {
@@ -54,4 +53,32 @@ class RubricasApplicationTests {
 		assertEquals(new BigDecimal("2500.00"), valorProp.calcular());
 	}
 
+	@Test
+	void rubricasTabelas() {
+		List<BigDecimal> faixas = new ArrayList<>();
+
+		faixas.add(new BigDecimal("0"));
+		faixas.add(new BigDecimal("1212.00"));
+		faixas.add(new BigDecimal("1212.01"));
+		faixas.add(new BigDecimal("2427.35"));
+		faixas.add(new BigDecimal("2427.36"));
+		faixas.add(new BigDecimal("3641.03"));
+		faixas.add(new BigDecimal("3641.04"));
+		faixas.add(new BigDecimal("7087.22"));
+		faixas.add(new BigDecimal("7087.23"));
+
+		List<BigDecimal> aliquotas = new ArrayList<>();
+
+		aliquotas.add(new BigDecimal("0.075"));
+		aliquotas.add(new BigDecimal("0.09"));
+		aliquotas.add(new BigDecimal("0.12"));
+		aliquotas.add(new BigDecimal("0.14"));
+		aliquotas.add(new BigDecimal("0.14"));
+
+		Rubrica salarioBruto = new ValorFixo(new BigDecimal("1000"));
+		Rubrica inss = new RubricaIPE(salarioBruto, faixas, aliquotas, 5);
+		System.out.println("Valor inss = "+ inss.calcular());
+
+
+	}
 }

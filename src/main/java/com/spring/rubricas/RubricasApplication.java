@@ -60,6 +60,7 @@ public class RubricasApplication implements CommandLineRunner {
 		ValorFixo valorFixo2 = new ValorFixo(new BigDecimal("1000"));
 		
 		INSS inss = new INSS(valorFixo2, faixas, aliquotas);
+
 		
 		System.out.println(inss.calcular());
 	}
